@@ -8,22 +8,24 @@ function alertMe() {
 
 // A class for making dice
 class Die {
-  // A constructor is a function called when using the “new” keyword to create a new die object
-  constructor(numberOfSides) {
-    this.numberOfSides = numberOfSides;
-    // populate the die with the specified number of sides
-    this.sides = [];
-    for (let i = 0; i < numberOfSides; i++) {
-      this.sides.push(i + 1);
-    }
+  // The constructor function is used to create a new die when the “new” keyword is used
+  constructor(sides) {
+    // sets the number of sides the die has
+    this.sides = sides;
+    // rolls the die for an initial showing value
+    this.showingSide = Math.floor(Math.random()*this.sides) + 1;
   }
 
-  // a function to roll the die
-  roll() {
-    return this.sides[Math.floor(Math.random()*this.sides.length)];
-  }
+  // a function to roll the die on command
+  roll() { this.showingSide = Math.floor(Math.random()*this.sides) + 1; }
 }
 
-// adding in a 6-sided die
-let sixSided = new Die(6);
-document.getElementById("die").innerHTML = sixSided.roll();
+// getting references to any dice in the DOM
+let sixSidedDice = document.getElementsByClassName("six-sided-die")
+
+Array.from(sixSidedDice).forEach(die => {
+  // making a new die
+  let sixSider = new Die(6);
+  // assigning values to the DOM
+  die.innerHTML = sixSider.showingSide;
+});
