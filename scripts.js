@@ -1,4 +1,7 @@
+// say hello
 console.log("Welcome, pilgrim.");
+
+// Cory made a change!
 function alertMe() {
   alert ("I made a change!");
 }
@@ -21,7 +24,6 @@ class Die {
   }
 }
 
-// testing out the 6-sided die
+// adding in a 6-sided die
 let sixSided = new Die(6);
-console.log("Here is a six-sided die:", sixSided);
-console.log("And we roll a", sixSided.roll());
+document.getElementById("die").innerHTML = sixSided.roll();
